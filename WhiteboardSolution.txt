@@ -1,0 +1,22 @@
+const mergeSort = (array) => {
+  const halfway = array.length/2;
+
+  if(array.length < 2){
+    return array
+  }
+
+  const array1 = array.splice(0, halfway);
+  return merge(mergeSort(array1), mergeSort(array));
+}
+
+const merge = (array1, array2) => {
+  let outputArray = [];
+  while(array1.length && array2.length){
+    if(array1[0] < array2[0]){
+      outputArray.push(array1.shift());
+    }else{
+      outputArray.push(array2.shift());
+    }
+  }
+  return [...outputArray, ...array1, ...array2]
+}
